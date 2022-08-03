@@ -1,5 +1,30 @@
 Rails.application.routes.draw do
-  devise_for :members
-  devise_for :admins
+
+  devise_for :customers,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+
+  root to: 'public/homes#top'
+
+  namespace :public do
+    get "home/about"=>"homes#about", as: "about"
+    resources :members, only: [:edit, :index, :show, :update]
+    get 'members/unsubscribe'
+    patch 'members/withdraw' => 'members#withdraw'
+    resources :tournaments, only: [:new, :create, :edit, :destroy, :index, :show, :update]
+  end
+
+  namespace :admin do
+    get 'homes/top'
+    resources :tournaments, only: [:edit, :index, :show, :update]
+    resources :members, only: [:edit, :index, :show, :update]
+    resources :teams, only: [:edit, :index, :show, :update]
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -13,6 +13,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :nickname
       t.string :telephone_number
+      t.boolean :is_deleted, null: false, default: false
 
       ## Rememberable
       t.datetime :remember_created_at
