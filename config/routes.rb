@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :customers,skip: [:passwords], controllers: {
+  devise_for :members,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get 'members/unsubscribe'
     patch 'members/withdraw' => 'members#withdraw'
     resources :tournaments, only: [:new, :create, :edit, :destroy, :index, :show, :update]
+    resources :teams, only: [:new, :create, :edit, :destroy, :index, :show, :update]
   end
 
   namespace :admin do

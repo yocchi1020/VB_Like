@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 2022_08_03_073126) do
   create_table "team_members", force: :cascade do |t|
     t.integer "member_id"
     t.integer "team_id"
+    t.boolean "is_manager", default: false
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
