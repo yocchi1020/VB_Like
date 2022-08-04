@@ -1,2 +1,20 @@
-<h1>Public::Members#index</h1>
-<p>Find me in app/views/public/members/index.html.erb</p>
+<div class='container-fluid'>
+  <div class='row'>
+  	<div class="col-md-10">
+
+  		<h3 class="title"><%= @team_name %>所属メンバー一覧<span>（全<%= @members.count %>件）</span></h3>
+  		<div class="row">
+        <% @members.each do |item| %>
+          <div class="col-md-3">
+            <div class="item-box">
+              <%= link_to public_member_path(member) do %>
+                 <div class="text-center"><%= member.name %></div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  	</div>
+  </div>
+</div>
+

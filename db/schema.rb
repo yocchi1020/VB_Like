@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2022_08_03_073126) do
     t.string "name"
     t.string "nickname"
     t.string "telephone_number"
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

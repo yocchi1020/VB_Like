@@ -1,2 +1,39 @@
-<h1>Public::Members#edit</h1>
-<p>Find me in app/views/public/members/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col m-10">
+      <p id="notice"></p>
+        <h3><strong>会員情報編集</strong></h3>
+          <%= form_with model: @member, url: public_member_path(@member) do |f| %>
+
+              <table class="row table">
+                <tr>
+                  <th><%= f.label :氏名 %></th>
+                  <th><%= f.text_field :name, class:"form-control" %></th>
+　　　　　　　　</tr>
+                <tr>
+                  <th><%= f.label :ニックネーム %></th>
+                  <th><%= f.text_field :nickname, class:"form-control" %></th>
+                  </td>
+                </tr>
+                <tr>
+                  <th><%= f.label :電話番号 %></th>
+                  <td><%= f.text_field :telephone_number, class:"form-control" %></td>
+                </tr>
+
+                <tr>
+                  <th><%= f.label :メールアドレス %></th>
+                  <td><%= f.text_field :email , class:"form-control"%></td>
+                </tr>
+
+                <div class="form-group">
+                    <th><input type="submit" name="commit" value="編集内容を保存" class="btn btn-outline-dark" data-disable-with="Update Genre"></th><td></td>
+                    <th><%= link_to public_members_unsubscribe_path(current_member) do %>
+                         <button type="button" class="btn btn-outline-dark">退会する</button>
+                    <% end %></th>
+                </div>
+              </table>
+          <% end %>
+
+    </div>
+  </div>
+</div>

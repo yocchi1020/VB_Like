@@ -13,9 +13,9 @@ Rails.application.routes.draw do
 
   namespace :public do
     get "home/about"=>"homes#about", as: "about"
-    resources :members, only: [:edit, :index, :show, :update]
     get 'members/unsubscribe'
     patch 'members/withdraw' => 'members#withdraw'
+    resources :members, only: [:edit, :index, :show, :update]
     resources :tournaments, only: [:new, :create, :edit, :destroy, :index, :show, :update]
     resources :teams, only: [:new, :create, :edit, :destroy, :index, :show, :update]
   end

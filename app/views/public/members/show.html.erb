@@ -1,21 +1,33 @@
 <div class="container">
   <div class="row">
     <div class="col m-10">
-        <p id="notice"></p>
-          <h3><strong>マイページ</strong></h3>
-          <table class="table table-bordered table-condensed">
-                <p>
-                    <strong class="information-link">登録情報</strong>　　　<%= link_to edit_public_member_path(current_member) do %><button type="button" class="btn btn-outline-info">編集する</button><% end %>
-                </p>
-                <tr>
-                    <td>氏名</td>
-                    <td><%= @member.name %></td>
-                </tr>
-                <tr>
-                    <td>メールアドレス</td>
-                    <td><%= @member.email %></td>
-                </tr>
+      <p id="notice"></p>
+      <div class=text-center>
+        <h3><strong>マイページ</strong></h3>
+        <%= link_to public_tournaments_path do %><button type="button" class="btn btn-outline-info">大会一覧を見る</button><% end %>
+        <table class="table table-bordered table-condensed">
+          <p>
+            <strong class="information-link">登録情報</strong>
+          </p>
+          <tr>
+            <td>氏名</td>
+            <td><%= @member.name %></td>
+          </tr>
+          <tr>
+            <td>ニックネーム</td>
+            <td><%= @member.nickname %></td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td><%= @member.telephone_number %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @member.email %></td>
+          </tr>
         </table>
+        <%= link_to edit_public_member_path(current_member) do %><button type="button" class="btn btn-outline-info">編集する</button><% end %>
+      </div>
     </div>
   </div>
 </div>
