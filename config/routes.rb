@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :members,skip: [:passwords], controllers: {
+  devise_for :members, controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
