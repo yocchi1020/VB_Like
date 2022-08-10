@@ -1,2 +1,28 @@
-<h1>Public::Teams#index</h1>
-<p>Find me in app/views/public/teams/index.html.erb</p>
+<div class='container-fluid'>
+  <div class='row'>
+  	<div class="col-md-10">
+
+  		<h3 class="title">チーム一覧<span>（全<%= @teams.count %>件）</span></h3>
+  		<div class="row">
+        <% @teams.each do |team| %>
+          <div class="col-md-3">
+            <div class="item-box">
+              <%= link_to public_team_path(team) do %>
+                <div class="team-image">
+                  <% if team.image.attached? %>
+                    <%= image_tag team.image, size: "280x210" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpeg', size: "280x210" %>
+                  <% end %>
+                </div>
+                <div class="team-name">
+                  <%= team.name %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  	</div>
+  </div>
+</div>

@@ -1,2 +1,32 @@
-<h1>Public::Teams#show</h1>
-<p>Find me in app/views/public/teams/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col m-10">
+      <p id="notice"></p>
+      <div class=text-center>
+        <h3><strong><%= @team.name %></strong></h3>
+        <table class="table table-bordered table-condensed">
+          <p>
+            <strong class="information-link">登録情報</strong>
+          </p>
+          <tr>
+            <th>チーム説明</th>
+            <td><%= @team.overview %></td>
+          </tr>
+          <tr>
+            <th>実績</th>
+            <th><%= @team.achievement %></th>
+          </tr>
+          <tr>
+            <th>代表者連絡先</th>
+            <td><%= @team.contact_address %></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= @team.entry_field %></td>
+          </tr>
+        </table>
+        <%= link_to edit_public_team_path do %><button type="button" class="btn btn-outline-info">編集する</button><% end %>
+      </div>
+    </div>
+  </div>
+</div>

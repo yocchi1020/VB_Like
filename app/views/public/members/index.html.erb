@@ -4,7 +4,7 @@
 
   		<h3 class="title"><%= @team_name %>所属メンバー一覧<span>（全<%= @members.count %>件）</span></h3>
   		<div class="row">
-        <% @members.each do |item| %>
+        <% @members.each do |member| %>
           <div class="col-md-3">
             <div class="item-box">
               <%= link_to public_member_path(member) do %>

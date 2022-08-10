@@ -11,20 +11,24 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
 
+  devise_scope :member do
+    post 'public/members/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   namespace :public do
     get "home/about"=>"homes#about", as: "about"
     get 'members/unsubscribe'
     patch 'members/withdraw' => 'members#withdraw'
     resources :members, only: [:edit, :index, :show, :update]
-    resources :tournaments, only: [:new, :create, :edit, :destroy, :index, :show, :update]
     resources :teams, only: [:new, :create, :edit, :destroy, :index, :show, :update]
+    resources :tournaments, only: [:new, :create, :edit, :destroy, :index, :show, :update]
   end
 
   namespace :admin do
     get 'homes/top'
-    resources :tournaments, only: [:edit, :index, :show, :update]
-    resources :members, only: [:edit, :index, :show, :update]
     resources :teams, only: [:edit, :index, :show, :update]
+    resources :members, only: [:edit, :index, :show, :update]
+    resources :tournaments, only: [:edit, :index, :show, :update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,2 +1,46 @@
-<h1>Public::Tournaments#new</h1>
-<p>Find me in app/views/public/tournaments/new.html.erb</p>
+<div class='container'>
+  <div class= text-center>
+    <h3 class='mt-3'>大会新規登録</h3><br>
+  </div>
+  <div class='row'>
+    <%= form_with model: @tournament, url: public_tournaments_path, local: true do |f| %>
+      <table class="table table-borderless">
+          <div class='colspan-md-3'>
+            <tbody>
+              <tr>
+                <th><label for='inputimage'>画像</label></th>
+                <th><%= image_tag @tournament.image, size: '60x60' if @tournament.image.attached? %>
+                <%= f.file_field :image, accept: "image/*" %></th>
+              </tr>
+              <tr><th><label for='teamname'>大会名</label></th>
+                <th><%= f.text_field :name, rows: '5', id:'tournament[name]', placeholder: "大会名", class: 'form-control' %><th>
+              </tr>
+              <tr><th><label for='schedule'>スケジュール</label></th>
+                <th><%= f.text_field :schedule, rows: '5', id:'tournament[schedule]', placeholder: "日程", class: 'form-control' %></th>
+              </tr>
+              <tr><th><label for='achievement'>会場</label></th>
+                <th><%= f.text_field :place, rows: '5', id:'tournament[place]', placeholder: "ここに会場を記述します", class: 'form-control' %></th>
+              </tr>
+              <tr><th><label for='team_number'>募集チーム数</label></th>
+                <th><%= f.text_field :team_number, rows: '5', id:'tournament[team_number]', placeholder: "募集チーム数", class: 'form-control' %><th>
+              </tr>
+              <tr><th><label for='price'>参加費</label></th>
+                <th><%= f.text_field :price, rows: '5', id:'tournament[price]', placeholder: "参加費", class: 'form-control' %></th>
+              </tr>
+              <tr><th><label for='overview'>概要</label></th>
+                <th><%= f.text_area :overview, rows: '5', id:'tournament[overview]', placeholder: "ここに説明文を記述します", class: 'form-control' %></th>
+              </tr>
+              <tr><th><label for='url'>サイトのリンク</label></th>
+                <th><%= f.text_field :url, rows: '5', id:'tournament[url]', placeholder: "大会ホームページのリンク", class: 'form-control' %></th>
+              </tr>
+              <tr>
+                <th>
+                  <%= f.submit "新規登録", class: 'btn btn-outline-success' %>
+                </th>
+              </tr>
+            </tbody>
+        </div>
+      </table>
+    <% end %>
+  </div>
+</div>

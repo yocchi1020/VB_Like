@@ -1,2 +1,28 @@
-<h1>Public::Tournaments#index</h1>
-<p>Find me in app/views/public/tournaments/index.html.erb</p>
+<div class='container-fluid'>
+  <div class='row'>
+  	<div class="col-md-10">
+  		<h3 class="title">大会一覧</h3>
+  		<div class="row">
+        <% @tournaments.each do |tournament| %>
+          <div class="col-md-3">
+            <div class="item-box">
+              <%= link_to public_tournament_path(tournament) do %>
+                <div class="team-image">
+                  <% if tournament.image.attached? %>
+                    <%= image_tag tournament.image, size: "280x210" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpeg', size: "280x210" %>
+                  <% end %>
+                </div>
+                <div class="team-name">
+                  <%= tournament.name %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <%= link_to new_public_tournament_path do %><button type="button" class="btn btn-outline-info">大会を投稿する</button><% end %>
+      </div>
+  	</div>
+  </div>
+</div>

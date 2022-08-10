@@ -1,2 +1,45 @@
-<h1>Public::Tournaments#edit</h1>
-<p>Find me in app/views/public/tournaments/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col m-10">
+      <p id="notice"></p>
+        <h3><strong>大会情報編集</strong></h3>
+          <%= form_with model: @tournament, url: public_tournament_path(@tournament) do |f| %>
+              <table class="row table">
+                <tr>
+                  <th><%= f.label :大会名 %></th>
+                  <th><%= f.text_field :name, class:"form-control" %></th>
+　　　　　　　　</tr>
+                <tr>
+                  <th><%= f.label :スケジュール %></th>
+                  <th><%= f.text_area :schedule, class:"form-control" %></th>
+                  </td>
+                </tr>
+                <tr>
+                  <th><%= f.label :会場 %></th>
+                  <td><%= f.text_area :place, class:"form-control" %></td>
+                </tr>
+                <tr>
+                  <th><%= f.label :募集チーム数 %></th>
+                  <td><%= f.text_field :team_number , class:"form-control"%></td>
+                </tr>
+                <tr>
+                  <th><%= f.label :参加費 %></th>
+                  <td><%= f.text_area :price , class:"form-control"%></td>
+                </tr>
+                <tr>
+                  <th><%= f.label :概要 %></th>
+                  <td><%= f.text_area :overview , class:"form-control"%></td>
+                </tr>
+                <tr>
+                  <th><%= f.label :サイトへのリンク %></th>
+                  <td><%= f.text_field :url , class:"form-control"%></td>
+                </tr>
+                <div class="form-group">
+                    <th><input type="submit" name="commit" value="編集内容を保存" class="btn btn-outline-dark" data-disable-with="更新中"></th><td></td>
+                </div>
+              </table>
+          <% end %>
+
+    </div>
+  </div>
+</div>

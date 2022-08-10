@@ -1,2 +1,37 @@
-<h1>Public::Tournaments#show</h1>
-<p>Find me in app/views/public/tournaments/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col m-10">
+      <p id="notice"></p>
+      <div class=text-center>
+        <h3><strong><%= @tournament.name %></strong></h3>
+        <table class="table table-bordered table-condensed">
+          <tr>
+            <th>日時</th>
+            <td><%= @tournament.schedule %></td>
+          </tr>
+          <tr>
+            <th>会場</th>
+            <th><%= @tournament.place %></th>
+          </tr>
+          <tr>
+            <th>募集チーム</th>
+            <td><%= @tournament.team_number %></td>
+          </tr>
+          <tr>
+            <th>参加費</th>
+            <td><%= @tournament.price %></td>
+          </tr>
+          <tr>
+            <th>概要</th>
+            <td><%= @tournament.overview %></td>
+          </tr>
+          <tr>
+            <th>大会HP</th>
+            <td><%= @tournament.url %></td>
+          </tr>
+        </table>
+        <%= link_to edit_public_tournament_path do %><button type="button" class="btn btn-outline-info">編集する</button><% end %>
+      </div>
+    </div>
+  </div>
+</div>

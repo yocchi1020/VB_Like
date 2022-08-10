@@ -1,2 +1,40 @@
-<h1>Public::Teams#new</h1>
-<p>Find me in app/views/public/teams/new.html.erb</p>
+<div class='container'>
+  <div class= text-center>
+    <h3 class='mt-3'>チーム登録</h3><br>
+  </div>
+  <div class='row'>
+    <%= form_with model: @team, url: public_teams_path, local: true do |f| %>
+      <table class="table table-borderless">
+          <div class='colspan-md-3'>
+            <tbody>
+              <tr>
+                <th><label for='inputimage'>画像</label></th>
+                <th><%= image_tag @team.image, size: '60x60' if @team.image.attached? %>
+                <%= f.file_field :image, accept: "image/*" %></th>
+              </tr>
+              <tr><th><label for='teamname'>チーム名</label></th>
+                <th><%= f.text_field :name, rows: '5', id:'team[name]', placeholder: "チーム名", class: 'form-control' %><th>
+              </tr>
+              <tr><th><label for='overview'>チーム説明</label></th>
+                <th><%= f.text_area :overview, rows: '5', id:'team[overview]', placeholder: "ここに説明文を記述します", class: 'form-control' %></th>
+              </tr>
+              <tr><th><label for='achievement'>実績</label></th>
+                <th><%= f.text_area :achievement, rows: '5', id:'team[achievement]', placeholder: "ここに実績を記述します", class: 'form-control' %></th>
+              </tr>
+              <tr><th><label for='contact_address'>代表者</label></th>
+                <th><%= f.text_field :contact_address, rows: '5', id:'team[contact_address]', placeholder: "代表者連絡先", class: 'form-control' %><th>
+              </tr>
+              <tr><th><label for='entry_field'>自由記入欄</label></th>
+                <th><%= f.text_area :entry_field, rows: '5', id:'team[entry_field]', placeholder: "ご自由に記入してください", class: 'form-control' %></th>
+              </tr>
+              <tr>
+                <th>
+                  <%= f.submit "新規登録", class: 'btn btn-outline-success' %>
+                </th>
+              </tr>
+            </tbody>
+        </div>
+      </table>
+    <% end %>
+  </div>
+</div>
