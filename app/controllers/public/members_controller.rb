@@ -1,6 +1,7 @@
 class Public::MembersController < ApplicationController
   def show
     @member = current_member
+    @team_comment = TeamComment.new
   end
 
   def index
@@ -30,8 +31,19 @@ class Public::MembersController < ApplicationController
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
   end
+
+  def favorites
+    @member = Member.find(params[:id])
+    favorites= Favorite.where(member_id: @member.id).pluck(:tournament_id)
+    @favorite_tournaments = Tournament.find(favorites)
+  end
+
   private
     def member_params
       params.require(:member).permit(:name, :nickname, :email, :telephone_number)
+    end
+
+    def set_member
+      @member = Member.find(params[:id])
     end
 end

@@ -5,6 +5,21 @@
       <div class=text-center>
         <h3><strong><%= @tournament.name %></strong></h3>
         <table class="table table-bordered table-condensed">
+          <% if @tournament.favorited_by?(current_member) %>
+            <p>
+              <%= link_to public_tournament_favorites_path(@tournament), method: :delete do %>
+                <i class="fas fa-thumbs-up"></i>
+              <% end %>
+              <%= @tournament.favorites.count %> いいね
+            </p>
+            <% else %>
+            <p>
+              <%= link_to public_tournament_favorites_path(@tournament), method: :post do %>
+                <i class="far fa-thumbs-up"></i>
+              <% end %>
+              <%= @tournament.favorites.count %> いいね
+            </p>
+          <% end %>
           <tr>
             <th>日時</th>
             <td><%= @tournament.schedule %></td>

@@ -15,13 +15,23 @@ Rails.application.routes.draw do
     post 'public/members/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
+
+
   namespace :public do
     get "home/about"=>"homes#about", as: "about"
     get 'members/unsubscribe'
     patch 'members/withdraw' => 'members#withdraw'
-    resources :members, only: [:edit, :index, :show, :update]
-    resources :teams, only: [:new, :create, :edit, :destroy, :index, :show, :update]
-    resources :tournaments, only: [:new, :create, :edit, :destroy, :index, :show, :update]
+    resources :members, only: [:edit, :index, :show, :update] do
+      member do
+        get :favorites
+      end
+    end
+    resources :teams, only: [:new, :create, :edit, :destroy, :index, :show, :update] do
+      resources :team_comments, only: [:create, :destroy]
+    end
+    resources :tournaments, only: [:new, :create, :edit, :destroy, :index, :show, :update] do
+      resource :favorites, only: [:create, :destroy]
+    end
   end
 
   namespace :admin do

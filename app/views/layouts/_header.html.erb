@@ -14,9 +14,17 @@
             <% end %>
           </li>
           <li>
-            <%=  link_to new_public_team_path ,class: 'nav-link text-light' do %>
+            <% unless current_member.team %>
+              <%=  link_to public_teams_path class: 'nav-link text-light' do %>
+                <i class="fas fa-book-open"></i> チームを探す
+              <% end %>
+            <%else%>
+                <%=  link_to public_team_path(current_member.team) ,class: 'nav-link text-light' do %>
               <i class="fas fa-book-open"></i> マイチーム
-            <% end %>
+            <%end %>
+
+            <%end%>
+
           </li>
           <li>
             <%=  link_to public_tournaments_path,class: 'nav-link text-light' do %>

@@ -5,10 +5,11 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :tournaments
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :team_members
-  has_many :team_comments
-  
+  has_many :team_comments, dependent: :destroy
+  belongs_to :team, optional: true
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com', name: 'guest', nickname: 'guest', telephone_number: '09000000000') do |member|
       member.password = SecureRandom.urlsafe_base64

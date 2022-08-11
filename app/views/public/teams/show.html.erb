@@ -26,6 +26,20 @@
           </tr>
         </table>
         <%= link_to edit_public_team_path do %><button type="button" class="btn btn-outline-info">編集する</button><% end %>
+        <div>
+          <p>コメント件数：<%= @team.team_comments.count %></p>
+          <% @team.team_comments.each do |team_comment| %>
+            <!--<p><%#= image_tag team_comment.user.get_profile_image(100,100) %></p>-->
+            <%= team_comment.member.nickname %>
+            <%= team_comment.created_at.strftime('%Y/%m/%d') %><%= team_comment.introduction %>
+          <% end %>
+        </div>
+        <div>
+          <%= form_with url: public_team_team_comments_path(@team), method: :post do |f| %>
+            <%= f.text_area :introduction, rows: '5', placeholder: "コメントをここに" %>
+            <%= f.submit "送信する" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

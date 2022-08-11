@@ -5,8 +5,8 @@ class Public::TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.new
-    if @team.save(team_params)
+    @team = Team.new(team_params)
+    if @team.save
       redirect_to public_team_path(@team)
     else
       redirect_to new_public_team_path, notice: "大変申し訳ありませんが記入漏れがあります"
@@ -19,6 +19,7 @@ class Public::TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @team_comment = TeamComment.new
   end
 
   def edit

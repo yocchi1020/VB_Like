@@ -25,6 +25,10 @@
             <td>メールアドレス</td>
             <td><%= @member.email %></td>
           </tr>
+          <tr>
+            <td></td>
+            <td><%= link_to "いいねした投稿", favorites_public_member_path(@member) %></td>
+          </tr>
         </table>
         <%= link_to edit_public_member_path(current_member) do %><button type="button" class="btn btn-outline-info">編集する</button><% end %>
       </div>
