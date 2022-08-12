@@ -15,13 +15,13 @@
           </li>
           <li>
             <% unless current_member.team %>
-              <%=  link_to public_teams_path class: 'nav-link text-light' do %>
+              <%=  link_to public_teams_path,class: 'nav-link text-light' do %>
                 <i class="fas fa-book-open"></i> チームを探す
-              <% end %>
+              <%end %>
             <%else%>
-                <%=  link_to public_team_path(current_member.team) ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> マイチーム
-            <%end %>
+              <%=  link_to public_team_path(current_member.team) ,class: 'nav-link text-light' do %>
+                <i class="fas fa-book-open"></i> マイチーム
+              <%end %>
 
             <%end%>
 

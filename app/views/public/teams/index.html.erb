@@ -1,8 +1,13 @@
 <div class='container-fluid'>
   <div class='row'>
-  	<div class="col-md-10">
-
-  		<h3 class="title">チーム一覧<span>（全<%= @teams.count %>件）</span></h3>
+  	<div class="col-2">
+  	  <%= render 'public/teams/prefecture', prefectures: @prefectures %>
+  	</div>
+  	<div class="col-2">
+  	  <%= render 'public/teams/category', categories: @categories %>
+  	</div>
+  	<div class="col-8">
+  		<h3 class="title"><%= @team_name %>一覧<span>（全<%= @teams.count %>件）</span></h3>
   		<div class="row">
         <% @teams.each do |team| %>
           <div class="col-md-3">
@@ -10,9 +15,9 @@
               <%= link_to public_team_path(team) do %>
                 <div class="team-image">
                   <% if team.image.attached? %>
-                    <%= image_tag team.image, size: "280x210" %>
+                    <%= image_tag team.image, size: "240x180" %>
                   <% else %>
-                    <%= image_tag 'no_image.jpeg', size: "280x210" %>
+                    <%= image_tag 'no_image.jpeg', size: "240x180" %>
                   <% end %>
                 </div>
                 <div class="team-name">

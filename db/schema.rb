@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_11_123624) do
+ActiveRecord::Schema.define(version: 2022_08_12_030649) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,12 @@ ActiveRecord::Schema.define(version: 2022_08_11_123624) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -115,6 +121,8 @@ ActiveRecord::Schema.define(version: 2022_08_11_123624) do
   end
 
   create_table "tournaments", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "prefecture_id"
     t.string "name"
     t.string "schedule"
     t.string "place"

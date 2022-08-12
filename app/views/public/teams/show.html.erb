@@ -13,6 +13,15 @@
             <td><%= @team.overview %></td>
           </tr>
           <tr>
+            <th>地域</th>
+            <td><%= @team.prefecture.name %></td>
+          </tr>
+          <tr>
+            <th>カテゴリ</th>
+            <td><%= @team.category.name %></td>
+          </tr>
+          <tr>
+          <tr>
             <th>実績</th>
             <th><%= @team.achievement %></th>
           </tr>
@@ -32,6 +41,9 @@
             <!--<p><%#= image_tag team_comment.user.get_profile_image(100,100) %></p>-->
             <%= team_comment.member.nickname %>
             <%= team_comment.created_at.strftime('%Y/%m/%d') %><%= team_comment.introduction %>
+            <%# if team.member == current_member %>
+              <%#= link_to "削除", public_team_team_comment_path(team_comment.team, team_comment), method: :delete %>
+            <%# end %>
           <% end %>
         </div>
         <div>

@@ -14,7 +14,25 @@ class Public::TournamentsController < ApplicationController
   end
 
   def index
-    @tournaments = Tournament.all
+    #presentメソッドはデータが入ってるかどうかを識別するメソッド
+    if (params[:prefecture_id]).present?
+      @tournaments = Tournament.where(prefecture_id: params[:prefecture_id])
+      #モデル.where(カラム名: params[:受け取る名前＊カラム名だとわかりやすい])
+      #whereメソッドは指定した条件に当てはまるデータを全て取得してくれる
+    elsif (params[:category_id]).present?
+      @tournaments = Tournament.where(category_id: params[:category_id])
+    else
+      @tournaments = Tournament.all
+    end
+
+    if (params[:prefecture_name]).present?
+      @tournament_name = params[:prefecture_name]
+    elsif (params[:category_name]).present?
+      @tournament_name = params[:category_name]
+    end
+    @prefectures = Prefecture.all
+    @categories = Category.all
+
   end
 
   def show
@@ -36,6 +54,6 @@ class Public::TournamentsController < ApplicationController
 
   private
   def tournament_params
-    params.require(:tournament).permit(:name, :schedule, :place, :team_number, :price, :overview, :url, :image)
+    params.require(:tournament).permit(:name, :schedule, :place, :team_number, :price, :overview, :url, :image, :prefecture_id, :category_id)
   end
 end

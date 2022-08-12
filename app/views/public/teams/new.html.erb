@@ -15,6 +15,12 @@
               <tr><th><label for='teamname'>チーム名</label></th>
                 <th><%= f.text_field :name, rows: '5', id:'team[name]', placeholder: "チーム名", class: 'form-control' %><th>
               </tr>
+              <tr><th><label for='prefecture'>都道府県</label></th>
+                <th><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "--選択してください--" %></th>
+              </tr>
+              <tr><th><label for='category'>カテゴリー</label></th>
+                <th><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "--選択してください--" %></th>
+              </tr>
               <tr><th><label for='overview'>チーム説明</label></th>
                 <th><%= f.text_area :overview, rows: '5', id:'team[overview]', placeholder: "ここに説明文を記述します", class: 'form-control' %></th>
               </tr>

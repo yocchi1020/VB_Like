@@ -4,8 +4,8 @@
       <p id="notice"></p>
       <div class=text-center>
         <h3><strong><%= @tournament.name %></strong></h3>
-        <table class="table table-bordered table-condensed">
-          <% if @tournament.favorited_by?(current_member) %>
+        <table class="table table-hover table-condensed">
+          <% if @tournament.favorited?(current_member) %>
             <p>
               <%= link_to public_tournament_favorites_path(@tournament), method: :delete do %>
                 <i class="fas fa-thumbs-up"></i>
@@ -20,6 +20,14 @@
               <%= @tournament.favorites.count %> いいね
             </p>
           <% end %>
+          <tr>
+            <th>地域</th>
+            <td><%= @tournament.prefecture.name %></td>
+          </tr>
+          <tr>
+            <th>カテゴリ</th>
+            <td><%= @tournament.category.name %></td>
+          </tr>
           <tr>
             <th>日時</th>
             <td><%= @tournament.schedule %></td>

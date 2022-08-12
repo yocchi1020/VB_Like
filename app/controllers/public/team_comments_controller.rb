@@ -7,6 +7,11 @@ class Public::TeamCommentsController < ApplicationController
     redirect_to public_team_path(team)
   end
 
+  def destroy
+    Team.find(params[:id]).destroy
+    redirect_to public_team_path(params[:team_id])
+  end
+
   private
 
   def team_comment_params

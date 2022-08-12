@@ -1,0 +1,27 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>都道府県検索</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% prefectures.each do |prefecture| %>
+      <tr>
+        <% if current_page?(public_teams_path) %>
+        <!--                              カラム名  genre(変数)のid-->
+          <td>
+            <%= link_to public_teams_path(prefecture_id: prefecture.id, prefecture_name: prefecture.name) do %>
+            <%= prefecture.name %>
+            <% end %>
+          </td>
+        <% else %>
+          <td>
+            <%= link_to public_tournaments_path(prefecture_id: prefecture.id, prefecture_name: prefecture.name) do %>
+            <%= prefecture.name %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

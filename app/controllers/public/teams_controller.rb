@@ -14,7 +14,24 @@ class Public::TeamsController < ApplicationController
   end
 
   def index
-    @teams = Team.all
+    #presentメソッドはデータが入ってるかどうかを識別するメソッド
+    if (params[:prefecture_id]).present?
+      @teams = Team.where(prefecture_id: params[:prefecture_id])
+      #モデル.where(カラム名: params[:受け取る名前＊カラム名だとわかりやすい])
+      #whereメソッドは指定した条件に当てはまるデータを全て取得してくれる
+    elsif (params[:category_id]).present?
+      @teams = Team.where(category_id: params[:category_id])
+    else
+      @teams = Team.all
+    end
+
+    if (params[:prefecture_name]).present?
+      @team_name = params[:prefecture_name]
+    elsif (params[:category_name]).present?
+      @team_name = params[:category_name]
+    end
+    @prefectures = Prefecture.all
+    @categories = Category.all
   end
 
   def show
@@ -37,7 +54,7 @@ class Public::TeamsController < ApplicationController
 
   private
   def team_params
-    params.require(:team).permit(:name, :overview, :achievement, :contact_address, :entry_field, :image)
+    params.require(:team).permit(:name, :overview, :achievement, :contact_address, :entry_field, :image, :prefecture_id, :category_id)
   end
 
 
