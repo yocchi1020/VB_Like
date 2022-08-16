@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2022_08_12_030649) do
     t.string "nickname"
     t.string "telephone_number"
     t.boolean "is_deleted", default: false, null: false
+    t.integer "team_id"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -100,18 +101,21 @@ ActiveRecord::Schema.define(version: 2022_08_12_030649) do
   end
 
   create_table "team_members", force: :cascade do |t|
-    t.integer "member_id"
     t.integer "team_id"
+    t.integer "member_id"
     t.boolean "is_manager", default: false
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["member_id"], name: "index_team_members_on_member_id"
+    t.index ["team_id"], name: "index_team_members_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
     t.integer "category_id"
     t.integer "prefecture_id"
-    t.string "name"
+    t.string "name", null: false
+    t.integer "owner_id"
     t.text "overview"
     t.string "achievement"
     t.string "contact_address"
@@ -140,4 +144,6 @@ ActiveRecord::Schema.define(version: 2022_08_12_030649) do
   add_foreign_key "favorites", "tournaments"
   add_foreign_key "team_comments", "members"
   add_foreign_key "team_comments", "teams"
+  add_foreign_key "team_members", "members"
+  add_foreign_key "team_members", "teams"
 end

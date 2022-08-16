@@ -1,16 +1,26 @@
 class Public::TeamsController < ApplicationController
-
+  before_action :authenticate_member!
+  before_action :ensure_correct_member, only: [:edit, :update]
   def new
     @team = Team.new
+    @team.members << current_member
   end
 
   def create
     @team = Team.new(team_params)
+    @team.owner = current_member
+    @team.members << current_member
     if @team.save
       redirect_to public_team_path(@team)
     else
       redirect_to new_public_team_path, notice: "大変申し訳ありませんが記入漏れがあります"
     end
+  end
+
+  def join
+    @team = Team.find(params[:team_id])
+    @team.members << current_member
+    redirect_to  public_teams_path
   end
 
   def index
@@ -52,10 +62,23 @@ class Public::TeamsController < ApplicationController
     end
   end
 
-  private
-  def team_params
-    params.require(:team).permit(:name, :overview, :achievement, :contact_address, :entry_field, :image, :prefecture_id, :category_id)
+  def destroy
+    @team = Team.find(params[:id])
+#current_memberは、@group.membersから消されるという記述。
+    @team.members.delete(current_member)
+    redirect_to public_teams_path
   end
 
+  private
+  def team_params
+    params.require(:team).permit(:name, :overview, :achievement, :contact_address, :entry_field, :image, :prefecture_id, :category_id, :owner_id, member_ids: [] )
+  end
+
+  def ensure_correct_member
+    @team = Team.find(params[:id])
+    unless @team.owner_id == current_member.id
+      redirect_to public_teams_path
+    end
+  end
 
 end

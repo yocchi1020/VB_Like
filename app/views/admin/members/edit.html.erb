@@ -1,2 +1,63 @@
-<h1>Admin::Members#edit</h1>
-<p>Find me in app/views/admin/members/edit.html.erb</p>
+  <div class="container">
+    <div class="row">
+      <div class="col m-10">
+        <p id="notice"></p><h2>会員情報編集</h2>
+        <%= form_with(@member, url: edit_admin_member_path(@member)) do |f| %>
+          <table class="row table">
+            <tr>
+              <th><%= f.label :名前 %></th>
+              <th><%= f.text_field :name, class:"form-control" %></th>
+              <th>(名)</th>
+              <th><%= f.text_field :last_name, class:"form-control" %></th>
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label :フリガナ %></th>
+              <th>(セイ)</th>
+              <th><%= f.text_field :first_name_kana, class:"form-control" %></th>
+              <th>(メイ)</th>
+              <th><%= f.text_field :last_name_kana, class:"form-control" %></th>
+            </tr>
+            <tr>
+              <th><%= f.label :郵便番号 %></th>
+              <th></th>
+              <td><%= f.text_field :postal_code, class:"form-control" %></td>
+              <th></th><th></th>
+            </tr>
+            <tr>
+              <th><%= f.label :住所 %></th>
+              <th></th>
+              <td><%= f.text_field :address, class:"form-control" %></td>
+              <th></th><th></th>
+            </tr>
+            <tr>
+              <th><%= f.label :電話番号 %></th>
+              <th></th>
+              <td><%= f.text_field :telephone_number, class:"form-control" %></td>
+              <th></th><th></th>
+            </tr>
+            <tr>
+              <th><%= f.label :メールアドレス %></th>
+              <th></th>
+              <td><%= f.text_field :email , class:"form-control"%></td>
+              <th></th><th></th>
+            </tr>
+            <tr>
+              <th><%= f.label :会員ステータス %></th>
+              <th></th>
+              <td><%= f.radio_button :is_deleted, false %>
+                  <%= f.label :is_deleted, '有効会員', value: false %>
+              </td>
+              <th></th>
+               <td><%= f.radio_button :is_deleted, true %>
+                  <%= f.label :is_deleted, '退会済み', value: true %>
+              </td>
+            </tr>
+          </table>
+        <div class="row text-right">
+          <%= f.submit "変更を保存する" ,class: "btn btn-outline-success " %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

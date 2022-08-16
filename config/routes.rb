@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     end
     resources :teams, only: [:new, :create, :edit, :destroy, :index, :show, :update] do
       resources :team_comments, only: [:create, :destroy]
+      get "join" => "teams#join"
     end
     resources :tournaments, only: [:new, :create, :edit, :destroy, :index, :show, :update] do
       resource :favorites, only: [:create, :destroy]

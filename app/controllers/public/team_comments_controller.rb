@@ -8,7 +8,7 @@ class Public::TeamCommentsController < ApplicationController
   end
 
   def destroy
-    Team.find(params[:id]).destroy
+    TeamComment.find(params[:id]).destroy
     redirect_to public_team_path(params[:team_id])
   end
 

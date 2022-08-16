@@ -40,7 +40,7 @@ class Public::MembersController < ApplicationController
 
   private
     def member_params
-      params.require(:member).permit(:name, :nickname, :email, :telephone_number)
+      params.require(:member).permit(:name, :nickname, :email, :telephone_number, :team_id)
     end
 
     def set_member

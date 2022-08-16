@@ -65,3 +65,5 @@ Category.create(id: 4, name: '女子9人制')
 Category.create(id: 5, name: '混合')
 Category.create(id: 6, name: 'ビーチ2人制')
 Category.create(id: 7, name: 'ビーチ4人制')
+
+Team.create(id: 1, name: 'ゲストチーム', prefecture_id: '13', category_id: '1', overview: 'ゲストチームです', achievement: '都リーグ２部', contact_address: 'ゲスト09000000000', entry_field: '自由に記入します')

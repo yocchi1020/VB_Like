@@ -34,7 +34,13 @@
             <td><%= @team.entry_field %></td>
           </tr>
         </table>
-        <%= link_to edit_public_team_path do %><button type="button" class="btn btn-outline-info">編集する</button><% end %>
+        <% if @team.owner == current_member %>
+          <%= link_to 'Edit', edit_public_team_path(@team), class: "btn btn-sm btn-success" %>
+        <% elsif @team.members.include?(current_member) %>
+          <%= link_to '脱退する', public_team_path(@team), method: :delete, class: "btn btn-sm btn-danger" %>
+        <% else %>
+          <%= link_to 'チームに参加する', public_team_join_path(@team), class: "btn btn-sm btn-success" %>
+        <% end %>
         <div>
           <p>コメント件数：<%= @team.team_comments.count %></p>
           <% @team.team_comments.each do |team_comment| %>
@@ -50,6 +56,9 @@
           <%= form_with url: public_team_team_comments_path(@team), method: :post do |f| %>
             <%= f.text_area :introduction, rows: '5', placeholder: "コメントをここに" %>
             <%= f.submit "送信する" %>
+          <% end %>
+          <% @team.members.each do |member| %>
+            <%= member.name %><br>
           <% end %>
         </div>
       </div>

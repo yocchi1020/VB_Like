@@ -7,8 +7,12 @@
               <table class="row table">
                 <tr>
                   <th><%= f.label :都道府県 %></th>
-                  <th><%= f.select :status, Article.statuses.keys.to_a, {} %></th>
+                  <th><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "--選択してください--" %></th>
 　　　　　　　　</tr>
+　　　　　　　　<tr>
+　　　　　　　　  <th><%= f.label :カテゴリー %></th>
+                  <th><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "--選択してください--" %></th>
+                </tr>
                 <tr>
                   <th><%= f.label :チーム名 %></th>
                   <th><%= f.text_field :name, class:"form-control" %></th>
