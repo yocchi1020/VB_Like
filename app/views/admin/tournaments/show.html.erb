@@ -3,37 +3,49 @@
     <div class='row'>
         <p id="notice"></p>
         <div class="col-xl-5">
-            <%= image_tag @item.image, size: '340x260' if @item.image.attached? %>
+            <%= image_tag @tournament.image, size: '340x260' if @tournament.image.attached? %>
         </div>
             <div class="col-xl-7">
                 <div align="center">
                     <table>
                         <tr>
-                            <th><h4>商品名</h4></th>
-                            <th><%= @item.name %></th>
+                            <th><h4>大会名</h4></th>
+                            <th><%= @tournament.name %></th>
                         </tr>
                         <tr>
-                            <th><h4>商品説明</h4></th>
-                            <th><%= @item.introduction %></th>
+                            <th><h4>地域</h4></th>
+                            <th><%= @tournament.prefecture.name %></th>
                         </tr>
                         <tr>
-                            <th><h4>ジャンル</h4></th>
-                            <th><%= @item.genre.name %></th>
+                            <th><h4>カテゴリー</h4></th>
+                            <th><%= @tournament.category.name %></th>
                         </tr>
                         <tr>
-                            <th><h4>税込価格(税抜価格)　　　</h4></th>
-                            <th><h5><%= (@item.price*1.1).floor.to_s(:delimited) %>(<%= @item.price %>)円</h5></th>
+                            <th><h4>日程</h4></th>
+                            <th><%= @tournament.schedule %></th>
                         </tr>
                         <tr>
-                            <th><h4>販売ステータス</h4></th>
-                            <% if @item.is_active? == false %>
-                                <td class="text-danger">販売停止中</td>
-                            <% else %>
-                                <td class="text-success">販売中</td>
-                            <% end %>
+                            <th><h4>会場</h4></th>
+                            <th><%= @tournament.place %></th>
+                        </tr>
+                        <tr>
+                            <th><h4>募集チーム数</h4></th>
+                            <th><%= @tournament.team_number %></th>
+                        </tr>
+                         <tr>
+                            <th><h4>参加費</h4></th>
+                            <th><%= @tournament.price %></th>
+                        </tr>
+                        <tr>
+                            <th><h4>概要</h4></th>
+                            <th><%= @tournament.overview %></th>
+                        </tr>
+                        <tr>
+                            <th><h4>大会HP</h4></th>
+                            <th><%= @tournament.url %></th>
                         </tr>
                     </table><br>
-                    <%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-lg btn-outline-success edit_item_#{@item.id}" %>
+                    <%= link_to '削除する', admin_tournament_path(@tournament), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
                 </div>
             </div>
         </div>
