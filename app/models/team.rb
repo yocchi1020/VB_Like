@@ -1,7 +1,7 @@
 class Team < ApplicationRecord
   has_many :team_members
   has_many :team_comments, dependent: :destroy
-  has_many :members, through: :team_members
+  has_many :members, through: :team_members, dependent: :destroy
   belongs_to :category, optional: true
   belongs_to :prefecture, optional: true
   belongs_to :owner, class_name: "Member"

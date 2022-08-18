@@ -1,2 +1,28 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col 4">
+      <%= link_to admin_teams_path do %>
+        <%= image_tag 'チーム一覧アイコン.jpeg', size: "240x180" %>
+        <div class="text-aline-center">
+          <p>チーム一覧</p>
+        </div>
+      <% end %>
+    </div>
+    <div class="col 4">
+      <%= link_to admin_members_path do %>
+        <%= image_tag 'メンバー一覧アイコン.jpeg', size: "240x180" %>
+        <div class="text-aline-center">
+          <p>メンバー一覧</p>
+        </div>
+      <% end %>
+    </div>
+    <div class="col 4">
+      <%= link_to admin_tournaments_path do %>
+        <%= image_tag 'トーナメントアイコン②.png', size: "240x180" %>
+        <div class="text-aline-center">
+          <p>大会一覧</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

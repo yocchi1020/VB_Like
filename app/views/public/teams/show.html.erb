@@ -46,17 +46,19 @@
           <% @team.team_comments.each do |team_comment| %>
             <!--<p><%#= image_tag team_comment.user.get_profile_image(100,100) %></p>-->
             <%= team_comment.member.nickname %>
-            <%= team_comment.created_at.strftime('%Y/%m/%d') %><%= team_comment.introduction %>
-            <%# if team.member == current_member %>
-              <%#= link_to "削除", public_team_team_comment_path(team_comment.team, team_comment), method: :delete %>
-            <%# end %>
+            <%= team_comment.created_at.strftime('%Y/%m/%d') %>
+            <%= team_comment.introduction %>
+            <% if @team.owner == current_member %>
+              <%= link_to "削除", public_team_team_comment_path(team_comment.team, team_comment), method: :delete %>
+            <% end %>
           <% end %>
-        </div>
-        <div>
-          <%= form_with url: public_team_team_comments_path(@team), method: :post do |f| %>
+          <!--form_with modelでmodelに紐づかないルーティングの部分(namespace..exp)は:付きで入れてあげる。＊今回はpublic-->
+          <%= form_with model: [:public, @team, @team_comment], method: :post do |f| %>
             <%= f.text_area :introduction, rows: '5', placeholder: "コメントをここに" %>
             <%= f.submit "送信する" %>
           <% end %>
+        </div>
+        <div>
           <% @team.members.each do |member| %>
             <%= member.name %><br>
           <% end %>

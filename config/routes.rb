@@ -36,10 +36,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    root to: 'homes#top'
     get 'homes/top'
-    resources :teams, only: [:edit, :index, :show, :update]
+    resources :teams, only: [:index, :show, :destroy]
     resources :members, only: [:edit, :index, :show, :update]
-    resources :tournaments, only: [:edit, :index, :show, :update]
+    resources :tournaments, only: [:index, :show, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
