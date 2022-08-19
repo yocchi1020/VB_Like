@@ -1,4 +1,5 @@
 class Admin::TournamentsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @tournaments = Tournament.all
   end

@@ -1,4 +1,5 @@
 class Public::TournamentsController < ApplicationController
+  before_action :authenticate_member!
   def new
     @tournament = Tournament.new
   end

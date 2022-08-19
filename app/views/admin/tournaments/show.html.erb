@@ -1,5 +1,5 @@
 <div class='container'>
-    <h3>　商品詳細</h3><br>
+    <h3>　大会詳細</h3><br>
     <div class='row'>
         <p id="notice"></p>
         <div class="col-xl-5">
@@ -46,6 +46,9 @@
                         </tr>
                     </table><br>
                     <%= link_to '削除する', admin_tournament_path(@tournament), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+                    <div class="d-inline-block ml-5">
+                        <%= link_to '大会一覧に戻る',admin_tournaments_path, class:"btn btn-outline-primary" %>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
 class Admin::TeamsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @teams = Team.all
   end

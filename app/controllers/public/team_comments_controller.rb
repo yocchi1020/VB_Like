@@ -1,4 +1,5 @@
 class Public::TeamCommentsController < ApplicationController
+  before_action :authenticate_member!
   def create
     team = Team.find(params[:team_id])
     team_comment = current_member.team_comments.new(team_comment_params)
