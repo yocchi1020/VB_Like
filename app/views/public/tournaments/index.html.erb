@@ -1,0 +1,34 @@
+<div class='container-fluid'>
+  <div class='row'>
+    <div class="col-2">
+  	  <%= render 'public/teams/prefecture', prefectures: @prefectures %>
+  	</div>
+  	<div class="col-2">
+  	  <%= render 'public/teams/category', categories: @categories %>
+  	</div>
+  	<div class="col-8">
+  		<h3 class="title">大会一覧　　   <%= link_to new_public_tournament_path do %><button type="button" class="btn btn-outline-info">大会を投稿する</button><% end %></h3>
+  		<div class="row">
+        <% @tournaments.each do |tournament| %>
+          <div class="col-md-4">
+            <div class="item-box">
+              <%= link_to public_tournament_path(tournament) do %>
+                <div class="team-image">
+                  <% if tournament.image.attached? %>
+                    <%= image_tag tournament.image, size: "200x210" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpeg', size: "280x210" %>
+                  <% end %>
+                </div>
+                <div class="team-name">
+                  <%= tournament.name %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+  	</div>
+  </div>
+</div>

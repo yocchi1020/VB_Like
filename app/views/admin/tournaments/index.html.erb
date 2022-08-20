@@ -1,0 +1,56 @@
+<div class='container'>
+    <h3>大会一覧</h3><br>
+    <!--<div class='row border-top border-bottom py-1 font-weight-bold'>-->
+    <table class="table table-hover">
+        <thead>
+            <th>
+                <h4>大会ID</h4>
+            </th>
+            <th>
+                <h4>大会名</h4>
+            </th>
+            <th>
+                <h4>都道府県</h4>
+            </th>
+            <th>
+                <h4>カテゴリー</h4>
+            </th>
+            <th>
+                <h4>日程</h4>
+            </th>
+            <th>
+                <h4>会場</h4>
+            </th>
+        </thead>
+        <div class='jscroll'>
+            <div class='row border-bottom py-1'>
+                <tbody>
+                    <% @tournaments.each do |tournament| %>
+                        <tr>
+                            <td>
+                                <%= tournament.id %>
+                            </td>
+                            <td>
+                                <%= link_to admin_tournament_path(tournament) do %>
+                                    <%= tournament.name %>
+                                <% end %>
+                            </td>
+                            <td>
+                                <%= tournament.prefecture.name %>
+                            </td>
+                            <td>
+                                <%= tournament.category.name %>
+                            </td>
+                            <td>
+                                <%= tournament.schedule %>
+                            </td>
+                            <td>
+                                <%= tournament.place %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </div>
+        </div>
+    </table>
+</div>

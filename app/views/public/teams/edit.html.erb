@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col m-10">
+      <p id="notice"></p>
+        <h3><strong>チーム情報編集</strong></h3>
+          <%= form_with model: @team, url: public_team_path(@team) do |f| %>
+              <table class="row table">
+                <tr>
+                  <th><%= f.label :都道府県 %></th>
+                  <th><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "--選択してください--" %></th>
+　　　　　　　　</tr>
+　　　　　　　　<tr>
+　　　　　　　　  <th><%= f.label :カテゴリー %></th>
+                  <th><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "--選択してください--" %></th>
+                </tr>
+                <tr>
+                  <th><%= f.label :チーム名 %></th>
+                  <th><%= f.text_field :name, class:"form-control" %></th>
+　　　　　　　　</tr>
+                <tr>
+                  <th><%= f.label :チーム説明 %></th>
+                  <th><%= f.text_area :overview, class:"form-control" %></th>
+                  </td>
+                </tr>
+                <tr>
+                  <th><%= f.label :実績 %></th>
+                  <td><%= f.text_area :achievement, class:"form-control" %></td>
+                </tr>
+                <tr>
+                  <th><%= f.label :代表者連絡先 %></th>
+                  <td><%= f.text_field :contact_address , class:"form-control"%></td>
+                </tr>
+                <tr>
+                  <th><%= f.label :自由記入欄 %></th>
+                  <td><%= f.text_area :entry_field , class:"form-control"%></td>
+                </tr>
+                <div class="form-group">
+                    <th><input type="submit" name="commit" value="編集内容を保存" class="btn btn-outline-dark" data-disable-with="Update Genre"></th><td></td>
+                </div>
+              </table>
+          <% end %>
+    </div>
+  </div>
+</div>

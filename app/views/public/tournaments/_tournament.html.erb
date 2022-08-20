@@ -1,0 +1,4 @@
+<%= link_to image_tag( tournament.image.variant(resize: '100x100') ), public_tournament_path(tournament.id) %>
+<i class="fa fa-heart unlike-btn"></i>
+<%= tournament.favorites.length %>
+<%= link_to tournament.name, public_tournament_path(tournament.id) %>

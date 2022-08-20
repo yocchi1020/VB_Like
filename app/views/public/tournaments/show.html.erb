@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col m-10">
+      <p id="notice"></p>
+      <div class=text-center>
+        <h3><strong><%= @tournament.name %></strong></h3>
+        <table class="table table-hover table-condensed">
+          <% if @tournament.favorited?(current_member) %>
+            <p>
+              <%= link_to public_tournament_favorites_path(@tournament), method: :delete do %>
+                <i class="fas fa-thumbs-up"></i>
+              <% end %>
+              <%= @tournament.favorites.count %> いいね
+            </p>
+            <% else %>
+            <p>
+              <%= link_to public_tournament_favorites_path(@tournament), method: :post do %>
+                <i class="far fa-thumbs-up"></i>
+              <% end %>
+              <%= @tournament.favorites.count %> いいね
+            </p>
+          <% end %>
+          <tr>
+            <th>地域</th>
+            <td><%= @tournament.prefecture.name %></td>
+          </tr>
+          <tr>
+            <th>カテゴリ</th>
+            <td><%= @tournament.category.name %></td>
+          </tr>
+          <tr>
+            <th>日程</th>
+            <td><%= @tournament.schedule %></td>
+          </tr>
+          <tr>
+            <th>会場</th>
+            <th><%= @tournament.place %></th>
+          </tr>
+          <tr>
+            <th>募集チーム</th>
+            <td><%= @tournament.team_number %></td>
+          </tr>
+          <tr>
+            <th>参加費</th>
+            <td><%= @tournament.price %></td>
+          </tr>
+          <tr>
+            <th>概要</th>
+            <td><%= @tournament.overview %></td>
+          </tr>
+          <tr>
+            <th>大会HP</th>
+            <td><%= @tournament.url %></td>
+          </tr>
+        </table>
+        <%= link_to edit_public_tournament_path do %><button type="button" class="btn btn-outline-info">編集する</button><% end %>
+      </div>
+    </div>
+  </div>
+</div>

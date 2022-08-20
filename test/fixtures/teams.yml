@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category_id: 1
+  prefecture_id: 1
+  name: 
+  overview: MyText
+  achievement: MyString
+  contact_address: MyString
+  entry_field: MyText
+
+two:
+  category_id: 1
+  prefecture_id: 1
+  name: 
+  overview: MyText
+  achievement: MyString
+  contact_address: MyString
+  entry_field: MyText

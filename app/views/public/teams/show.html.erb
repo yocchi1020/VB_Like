@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col m-10">
+      <p id="notice"></p>
+      <div class=text-center>
+        <h3><strong><%= @team.name %></strong></h3>
+        <table class="table table-bordered table-condensed">
+          <p>
+            <strong class="information-link">登録情報</strong>
+          </p>
+          <tr>
+            <th>チーム説明</th>
+            <td><%= @team.overview %></td>
+          </tr>
+          <tr>
+            <th>地域</th>
+            <td><%= @team.prefecture.name %></td>
+          </tr>
+          <tr>
+            <th>カテゴリ</th>
+            <td><%= @team.category.name %></td>
+          </tr>
+          <tr>
+          <tr>
+            <th>実績</th>
+            <th><%= @team.achievement %></th>
+          </tr>
+          <tr>
+            <th>代表者連絡先</th>
+            <td><%= @team.contact_address %></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= @team.entry_field %></td>
+          </tr>
+        </table>
+        <% if @team.owner == current_member %>
+          <%= link_to 'Edit', edit_public_team_path(@team), class: "btn btn-sm btn-success" %>
+        <% elsif @team.members.include?(current_member) %>
+          <%= link_to '脱退する', public_team_path(@team), method: :delete, class: "btn btn-sm btn-danger" %>
+        <% else %>
+          <%= link_to 'チームに参加する', public_team_join_path(@team), class: "btn btn-sm btn-success" %>
+        <% end %>
+        <div>
+          <p>コメント件数：<%= @team.team_comments.count %></p>
+          <% @team.team_comments.each do |team_comment| %>
+            <!--<p><%#= image_tag team_comment.user.get_profile_image(100,100) %></p>-->
+            <%= team_comment.member.nickname %>
+            <%= team_comment.created_at.strftime('%Y/%m/%d') %>
+            <%= team_comment.introduction %>
+            <% if @team.owner == current_member %>
+              <%= link_to "削除", public_team_team_comment_path(team_comment.team, team_comment), method: :delete %>
+            <% end %>
+          <% end %>
+          <!--form_with modelでmodelに紐づかないルーティングの部分(namespace..exp)は:付きで入れてあげる。＊今回はpublic-->
+          <%= form_with model: [:public, @team, @team_comment], method: :post do |f| %>
+            <%= f.text_area :introduction, rows: '5', placeholder: "コメントをここに" %>
+            <%= f.submit "送信する" %>
+          <% end %>
+        </div>
+        <div>
+          <% @team.members.each do |member| %>
+            <%= member.name %><br>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

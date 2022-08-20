@@ -1,0 +1,41 @@
+<div class='container'>
+  <h3>  チーム詳細</h3><br>
+  <div class='row'>
+    <p id="notice"></p>
+    <div class="col-xl-5">
+      <%= image_tag @team.image, size: '340x260' if @team.image.attached? %>
+    </div>
+      <div class="col-xl-7">
+          <div align="center">
+              <table>
+                  <tr>
+                      <th><h4>チーム名</h4></th>
+                      <th><%= @team.name %></th>
+                  </tr>
+                  <tr>
+                      <th><h4>都道府県</h4></th>
+                      <th><%= @team.prefecture.name %></th>
+                  </tr>
+                  <tr>
+                      <th><h4>カテゴリー</h4></th>
+                      <th><%= @team.category.name %></th>
+                  </tr>
+                  <tr>
+                      <th><h4>チーム説明</h4></th>
+                      <th><%= @team.overview %></th>
+                  </tr>
+                  <tr>
+                      <th><h4>実績</h4></th>
+                      <th><%= @team.achievement %></th>
+                  </tr>
+                  <tr>
+                      <th><h4>代表者連絡先</h4></th>
+                      <th><%= @team.contact_address %></th>
+                  </tr>
+              </table><br>
+              <%= link_to '削除する', admin_team_path(@team), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

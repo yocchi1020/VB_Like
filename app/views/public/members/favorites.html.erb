@@ -1,0 +1,25 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col">
+      いいね一覧
+      <% @favorite_tournaments.each do |tournament|%>
+        <div class="col-md-3">
+          <div class="item-box">
+            <%= link_to public_tournament_path(tournament) do %>
+              <div class="team-image">
+                <% if tournament.image.attached? %>
+                  <%= image_tag tournament.image, size: "280x210" %>
+                <% else %>
+                  <%= image_tag 'no_image.jpeg', size: "280x210" %>
+                <% end %>
+              </div>
+              <div class="tournament-name">
+                <%= tournament.name %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

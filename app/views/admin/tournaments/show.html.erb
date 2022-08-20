@@ -1,0 +1,56 @@
+<div class='container'>
+    <h3>　大会詳細</h3><br>
+    <div class='row'>
+        <p id="notice"></p>
+        <div class="col-xl-5">
+            <%= image_tag @tournament.image, size: '340x260' if @tournament.image.attached? %>
+        </div>
+            <div class="col-xl-7">
+                <div align="center">
+                    <table>
+                        <tr>
+                            <th><h4>大会名</h4></th>
+                            <th><%= @tournament.name %></th>
+                        </tr>
+                        <tr>
+                            <th><h4>地域</h4></th>
+                            <th><%= @tournament.prefecture.name %></th>
+                        </tr>
+                        <tr>
+                            <th><h4>カテゴリー</h4></th>
+                            <th><%= @tournament.category.name %></th>
+                        </tr>
+                        <tr>
+                            <th><h4>日程</h4></th>
+                            <th><%= @tournament.schedule %></th>
+                        </tr>
+                        <tr>
+                            <th><h4>会場</h4></th>
+                            <th><%= @tournament.place %></th>
+                        </tr>
+                        <tr>
+                            <th><h4>募集チーム数</h4></th>
+                            <th><%= @tournament.team_number %></th>
+                        </tr>
+                         <tr>
+                            <th><h4>参加費</h4></th>
+                            <th><%= @tournament.price %></th>
+                        </tr>
+                        <tr>
+                            <th><h4>概要</h4></th>
+                            <th><%= @tournament.overview %></th>
+                        </tr>
+                        <tr>
+                            <th><h4>大会HP</h4></th>
+                            <th><%= @tournament.url %></th>
+                        </tr>
+                    </table><br>
+                    <%= link_to '削除する', admin_tournament_path(@tournament), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+                    <div class="d-inline-block ml-5">
+                        <%= link_to '大会一覧に戻る',admin_tournaments_path, class:"btn btn-outline-primary" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
