@@ -1,3 +1,29 @@
-<div class= "top_image" >
-  <%= image_tag 'VB_TOP.jpg', size: "1600x900" %>
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-md-10'>
+      <div class= "top_image" >
+        <%= image_tag 'VB_TOP.jpg', size: "900x600" %>
+      </div>
+      <h2>ようこそVB_Likeへ</h2>
+      <p>このサイトでは大学生や社会人のバレーボールプレーヤーや、バレーボールがしたいけどする場所が見つからない人などが気軽にチームや大会に参加するためのコミュニティサイトです。</p>
+    </div>
+    <div class='col-md-2'>
+      <table class="table">
+        <tr>
+          <td>
+            <%= link_to public_teams_path do %>
+              <button type="button" class="btn btn-outline-danger">チームを探す</button>
+            <% end %>
+          </td>
+        </tr>
+        </tr>
+          <td>
+            <%= link_to public_tournaments_path do %>
+              <button type="button" class="btn btn-outline-danger">大会を探す</button>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
