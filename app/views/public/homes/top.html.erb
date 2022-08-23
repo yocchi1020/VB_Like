@@ -1,5 +1,6 @@
 <div class='container-fluid'>
   <div class='row'>
+    <%= image_tag 'タイトルロゴ.jpg', size: "500x164" %>
     <div class='col-md-10'>
       <div class= "top_image" >
         <%= image_tag 'VB_TOP.jpg', size: "900x600" %>
@@ -9,20 +10,60 @@
     </div>
     <div class='col-md-2'>
       <table class="table">
+        <% if member_signed_in? %>
+          <tr>
+            <td>
+              <%= link_to public_member_path(current_member) do %>
+                <button type="button" class="btn btn-outline-dark">マイページ</button>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+          <td>
+            <%= link_to public_teams_path do %>
+              <button type="button" class="btn btn-outline-dark">マイチーム</button>
+            <% end %>
+          </td>
+        </tr>
         <tr>
           <td>
             <%= link_to public_teams_path do %>
-              <button type="button" class="btn btn-outline-danger">チームを探す</button>
+              <button type="button" class="btn btn-outline-dark">チームを探す</button>
             <% end %>
           </td>
         </tr>
-        </tr>
+        <tr>
           <td>
             <%= link_to public_tournaments_path do %>
-              <button type="button" class="btn btn-outline-danger">大会を探す</button>
+              <button type="button" class="btn btn-outline-dark">大会を探す</button>
             <% end %>
           </td>
         </tr>
+        <% else %>
+          <tr>
+            <td>
+              <%= link_to new_member_registration_path do %>
+                <button type="button" class="btn btn-outline-dark">新規登録</button>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to new_member_session_path do %>
+                <button type="button" class="btn btn-outline-dark">ログイン</button>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to public_members_guest_sign_in_path, method: :post do %>
+                <button type="button" class="btn btn-outline-dark">ゲスト</button>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+
+
       </table>
     </div>
   </div>

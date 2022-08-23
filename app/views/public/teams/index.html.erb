@@ -7,28 +7,32 @@
   	  <%= render 'public/teams/category', categories: @categories %>
   	</div>
   	<div class="col-8">
-  		<h3 class="title"><%= @team_name %>一覧<span>（全<%= @teams.count %>件）</span></h3>
+  		<h3 class="title"><%= @team_name %>一覧<span>（全<%= @teams.count %>件）</span><%= link_to new_public_team_path do %><button type="button" class="btn btn-outline-info">チームを作成する</button><% end %></h3>
   		<div class="row">
-        <% @teams.each do |team| %>
-          <div class="col-md-4">
-            <div class="item-box">
-              <%= link_to public_team_path(team) do %>
-                <div class="team-image">
-                  <% if team.image.attached? %>
-                    <%= image_tag team.image, size: "240x180" %>
-                  <% else %>
-                    <%= image_tag 'no_image.jpeg', size: "240x180" %>
-                  <% end %>
-                </div>
-                <div class="team-name">
-                  <%= team.name %><%= team.members.count %>
-                </div>
-
-              <% end %>
+  		  <div class="row justify-content-center">
+          <div class="card-deck">
+            <% @teams.each do |team| %>
+              <% if team.category_id == 6 || team.category_id == 7%>
+              <div class="card" style="background-color: red;">
+              <%else%>
+               <div class="card" style="background-color: blue;">
+              <%end%>
+              <img class="card-img-top" <%= image_tag team.image, size: "240x180" %> alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title"><%= link_to public_team_path(team) do %><%= team.name %><% end %></h4>
+                <p class="card-text">
+                  （メンバー<%= team.members.count %>人）
+                </p>
+                <a href="#!" class="btn btn-primary">Go somewhere</a>
+              </div>
             </div>
+
+            <% end %>
           </div>
-        <% end %>
+        </div>
+
       </div>
   	</div>
+
   </div>
 </div>
