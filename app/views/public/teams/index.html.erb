@@ -1,11 +1,11 @@
 <div class='container-fluid'>
   <div class='row'>
   	<div class="col-2">
-  	  <%= render 'public/teams/prefecture', prefectures: @prefectures %>
+  	  <%= render 'public/teams/prefecture', prefectures: @prefectures, categories: @categories %>
   	</div>
-  	<div class="col-2">
-  	  <%= render 'public/teams/category', categories: @categories %>
-  	</div>
+  	<!--<div class="col-2">-->
+  	<!--  <%#= render 'public/teams/category', categories: @categories %>-->
+  	<!--</div>-->
   	<div class="col-8">
   		<h3 class="title"><%= @team_name %>一覧<span>（全<%= @teams.count %>件）</span><%= link_to new_public_team_path do %><button type="button" class="btn btn-outline-info">チームを作成する</button><% end %></h3>
   		<div class="row">
@@ -13,17 +13,20 @@
           <div class="card-deck">
             <% @teams.each do |team| %>
               <% if team.category_id == 6 || team.category_id == 7%>
-              <div class="card" style="background-color: red;">
+              <div class="card" style="background-color: cyan;">
               <%else%>
-               <div class="card" style="background-color: blue;">
+               <div class="card" style="background-color: khaki;">
               <%end%>
-              <img class="card-img-top" <%= image_tag team.image, size: "240x180" %> alt="Card image cap">
+              <% if team.image.attached? %>
+                <img class="card-img-top" <%= image_tag team.image, size: "240x180" %> alt="Card image cap">
+              <% else %>
+                <img class="card-img-top" <%= image_tag asset_path("VBicon3.png"), class: 'img-fuluid' %> alt="Card image cap">
+              <% end %>
               <div class="card-body">
                 <h4 class="card-title"><%= link_to public_team_path(team) do %><%= team.name %><% end %></h4>
                 <p class="card-text">
                   （メンバー<%= team.members.count %>人）
                 </p>
-                <a href="#!" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
 
