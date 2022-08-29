@@ -27,6 +27,7 @@ class Public::TeamsController < ApplicationController
     #presentメソッドはデータが入ってるかどうかを識別するメソッド
     if (params[:prefecture_id]).present?
       @teams = Team.where(prefecture_id: params[:prefecture_id])
+      @team_name = Prefecture.find(params[:prefecture_id]).name
       #モデル.where(カラム名: params[:受け取る名前＊カラム名だとわかりやすい])
       #whereメソッドは指定した条件に当てはまるデータを全て取得してくれる
     elsif (params[:category_id]).present?
@@ -35,9 +36,7 @@ class Public::TeamsController < ApplicationController
       @teams = Team.all
     end
 
-    if (params[:prefecture_name]).present?
-      @team_name = params[:prefecture_name]
-    elsif (params[:category_name]).present?
+    if (params[:category_name]).present?
       @team_name = params[:category_name]
     end
     @prefectures = Prefecture.all

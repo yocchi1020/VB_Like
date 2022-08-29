@@ -1,0 +1,32 @@
+<div class='container-fluid'>
+  <div class='row'>
+    <div class= "col-12">
+  		<h1 class="title d-flex justify-content-center m-2"><strong><%= @member.name %>の所属チーム</strong></h1>
+  		<div class='row'>
+        <% @teams.each do |team| %>
+          <div class= "col-4 p-2 my-2">
+            <% if team.category_id == 6 || team.category_id == 7%>
+              <div class="card" style="background-color: lightgoldenrodyellow;">
+            <% elsif team.category_id == 5 %>
+              <div class="card" style="background-color: lavender;">
+            <% elsif team.category_id == 3 || team.category_id == 4 %>
+              <div class="card" style="background-color: pink;">
+            <% else %>
+              <div class="card" style="background-color: skyblue;">
+            <% end %>
+              <div class="card-body">
+                <h4 class="card-title d-flex justify-content-center"><%= link_to public_team_path(team) do %><%= team.name %><% end %></h4>
+                <p class="card-text d-flex justify-content-center"><%= team.prefecture.name %>　<%= team.category.name %><small class="text-muted">(<%= team.members.count %>人)</small></p>
+              </div>
+              <% if team.image.attached? %>
+                <%= image_tag team.image, {class: "card_image"}  %>
+              <% else %>
+                <%= image_tag "VBicon3.png", {class: "card_image"}  %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,70 @@
-<div class= "top_image" >
-  <%= image_tag 'VB_TOP.jpg', size: "1600x900" %>
+<div class='container-fluid'>
+  <div class='row'>
+    <%= image_tag 'タイトルロゴ.jpg', size: "500x164" %>
+    <div class='col-md-10'>
+      <div class= "top_image" >
+        <%= image_tag 'VB_TOP.jpg', size: "900x600" %>
+      </div>
+      <h2>ようこそVB_Likeへ</h2>
+      <p>このサイトでは大学生や社会人のバレーボールプレーヤーや、バレーボールがしたいけどする場所が見つからない人などが気軽にチームや大会に参加するためのコミュニティサイトです。</p>
+    </div>
+    <div class='col-md-2'>
+      <table class="table">
+        <% if member_signed_in? %>
+          <tr>
+            <td>
+              <%= link_to public_member_path(current_member) do %>
+                <button type="button" class="btn btn-outline-dark">マイページ</button>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+          <td>
+            <%= link_to public_members_myteam_path(member_id: @member.id) do %>
+              <button type="button" class="btn btn-outline-dark">マイチーム</button>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to public_teams_path do %>
+              <button type="button" class="btn btn-outline-dark">チームを探す</button>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to public_tournaments_path do %>
+              <button type="button" class="btn btn-outline-dark">大会を探す</button>
+            <% end %>
+          </td>
+        </tr>
+        <% else %>
+          <tr>
+            <td>
+              <%= link_to new_member_registration_path do %>
+                <button type="button" class="btn btn-outline-dark">新規登録</button>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to new_member_session_path do %>
+                <button type="button" class="btn btn-outline-dark">ログイン</button>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to public_members_guest_sign_in_path, method: :post do %>
+                <button type="button" class="btn btn-outline-dark">ゲスト</button>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+
+
+      </table>
+    </div>
+  </div>
 </div>

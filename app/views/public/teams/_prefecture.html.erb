@@ -1,3 +1,6 @@
+
+
+
 <table class='table'>
   <thead>
     <tr>
@@ -5,23 +8,52 @@
     </tr>
   </thead>
   <tbody>
-    <% prefectures.each do |prefecture| %>
+
       <tr>
         <% if current_page?(public_teams_path) %>
         <!--                              カラム名  genre(変数)のid-->
           <td>
-            <%= link_to public_teams_path(prefecture_id: prefecture.id, prefecture_name: prefecture.name) do %>
-            <%= prefecture.name %>
+            <%= select_tag "prefecture", options_from_collection_for_select( prefectures, :id, :name) %>
+            <script>
+              prefecture.addEventListener('change', inputChange);
+              function inputChange(event){
+            location.href = "/public/teams?prefecture_id="+ event.currentTarget.value
+            }
+            </script>
+          </td>
+        <% else %>
+          <td>
+            <%= select_tag "prefecture", options_from_collection_for_select( prefectures, :id, :name) %>
+            <script>
+              prefecture.addEventListener('change', inputChange);
+              function inputChange(event){
+            location.href = "/public/tournaments?prefecture_id="+ event.currentTarget.value
+            }
+            </script>
+          </td>
+        <% end %>
+      </tr>
+      <tr>
+        <th>カテゴリー</th>
+      </tr>
+      <% categories.each do |category| %>
+      <tr>
+        <% if current_page?(public_teams_path) %>
+          <!--                              カラム名  genre(変数)のid-->
+          <td>
+            <%= link_to public_teams_path(category_id: category.id, category_name: category.name) do %>
+            <%= category.name %>
             <% end %>
           </td>
         <% else %>
           <td>
-            <%= link_to public_tournaments_path(prefecture_id: prefecture.id, prefecture_name: prefecture.name) do %>
-            <%= prefecture.name %>
+            <%= link_to public_tournaments_path(category_id: category.id, category_name: category.name) do %>
+            <%= category.name %>
             <% end %>
           </td>
         <% end %>
       </tr>
     <% end %>
+
   </tbody>
 </table>

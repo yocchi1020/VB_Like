@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="/"><span>VB_Likers</span></a>
+      <a class="" href="/"><%= image_tag "VBicon1.png", size: "100x100" %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -56,11 +56,7 @@
                 <i class="fas fa-home"></i> トップページ
               <% end %>
             </li>
-            <li>
-              <%= link_to public_about_path,class: 'nav-link text-light' do %>
-                <i class="fas fa-link"></i> About
-              <% end %>
-            </li>
+
             <li>
               <%= link_to new_member_registration_path,class: 'nav-link text-light' do %>
                 <i class="fas fa-user-plus"></i> sign up

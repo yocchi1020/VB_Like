@@ -1,5 +1,5 @@
 class Public::FavoritesController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_member!
   def create
     tournament = Tournament.find(params[:tournament_id])
     favorite = current_member.favorites.new(tournament_id: tournament.id)
