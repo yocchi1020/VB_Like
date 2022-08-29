@@ -6,6 +6,7 @@ class Public::TournamentsController < ApplicationController
 
   def create
     @tournament = Tournament.new(tournament_params)
+    @tournament.member_id = current_member.id
     if @tournament.save
       flash[:notice] = 'Tournament was successfully created.'
       redirect_to public_tournament_path(@tournament)

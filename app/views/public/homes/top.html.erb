@@ -20,7 +20,7 @@
           </tr>
           <tr>
           <td>
-            <%= link_to public_teams_path do %>
+            <%= link_to public_members_myteam_path(member_id: @member.id) do %>
               <button type="button" class="btn btn-outline-dark">マイチーム</button>
             <% end %>
           </td>

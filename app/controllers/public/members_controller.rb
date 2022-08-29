@@ -8,6 +8,11 @@ class Public::MembersController < ApplicationController
   def index
   end
 
+  def myteam
+    @member = Member.find(params[:member_id])
+    @teams = @member.teams
+  end
+
   def edit
     @member = current_member
   end

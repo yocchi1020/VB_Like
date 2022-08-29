@@ -22,7 +22,7 @@
                 <th><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "--選択してください--" %></th>
               </tr>
               <tr><th><label for='schedule'>スケジュール</label></th>
-                <th><%= f.text_field :schedule, rows: '5', id:'tournament[schedule]', placeholder: "日程", class: 'form-control' %></th>
+                <th><%= f.date_field :schedule, rows: '5', id:'tournament[schedule]', placeholder: "日程", class: 'form-control' %></th>
               </tr>
               <tr><th><label for='achievement'>会場</label></th>
                 <th><%= f.text_field :place, rows: '5', id:'tournament[place]', placeholder: "ここに会場を記述します", class: 'form-control' %></th>
