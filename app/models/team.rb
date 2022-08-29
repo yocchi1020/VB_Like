@@ -10,6 +10,8 @@ class Team < ApplicationRecord
   validates :name, presence: true
   validates :overview, presence: true
   validates :contact_address, presence: true
+  validates :prefecture_id ,presence:true
+  validates :category_id ,presence:true
 
 
 end
