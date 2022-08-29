@@ -8,17 +8,16 @@
       	</div>
       	<div class="col-10">
       		<div class="row">
-      		  <div class="row justify-content-center">
               <% @teams.each do |team| %>
               <div class= "col-4 p-2 my-2">
                 <% if team.category_id == 6 || team.category_id == 7%>
-                  <div class="card" style="background-color: lightgoldenrodyellow;">
+                  <div class="card team_card" style="background-color: lightgoldenrodyellow;">
                 <% elsif team.category_id == 5 %>
-                  <div class="card" style="background-color: lavender;">
+                  <div class="card team_card" style="background-color: lavender;">
                 <% elsif team.category_id == 3 || team.category_id == 4 %>
-                  <div class="card" style="background-color: pink;">
+                  <div class="card team_card" style="background-color: pink;">
                 <% else %>
-                  <div class="card" style="background-color: skyblue;">
+                  <div class="card team_card" style="background-color: skyblue;">
                 <% end %>
                   <div class="card-body">
                     <h4 class="card-title d-flex justify-content-center"><%= link_to public_team_path(team) do %><%= team.name %><% end %></h4>
@@ -32,7 +31,6 @@
                 </div>
               </div>
             <% end %>
-            </div>
           </div>
       	</div>
       </div>

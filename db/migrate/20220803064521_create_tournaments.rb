@@ -3,6 +3,7 @@ class CreateTournaments < ActiveRecord::Migration[6.1]
     create_table :tournaments do |t|
       t.integer :category_id
       t.integer :prefecture_id
+      t.integer :member_id
       t.string :name
       t.string :schedule
       t.string :place

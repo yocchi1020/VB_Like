@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(version: 2022_08_12_030649) do
   create_table "tournaments", force: :cascade do |t|
     t.integer "category_id"
     t.integer "prefecture_id"
+    t.integer "member_id"
     t.string "name"
     t.string "schedule"
     t.string "place"
