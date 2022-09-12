@@ -3,6 +3,7 @@
     <h3 class='mt-3'>チーム登録</h3><br>
   </div>
   <div class='row'>
+    <%= render 'layouts/errors', obj: @team %>
     <%= form_with model: @team, url: public_teams_path, local: true do |f| %>
       <table class="table table-borderless">
           <div class='colspan-md-3'>
