@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    attributes:  　　　　　　　# attributes:の直下に
+      member: 　　　　　　　　　 # モデル名を指定し
+        name: 名前   　　　　　# カラム名を指定する。
+        email: メールアドレス
+      team:
+        name: 名前
+        category_id: カテゴリー
+        prefecture_id: 都道府県
+      tournament:
+        name: 名前
+        category_id: カテゴリー
+        prefecture_id: 都道府県
