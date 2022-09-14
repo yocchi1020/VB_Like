@@ -53,7 +53,7 @@
             <td><%= @tournament.url %></td>
           </tr>
         </table>
-        <% if tournament.member = current_member %>
+        <% if @tournament.member = current_member %>
           <%= link_to edit_public_tournament_path do %><button type="button" class="btn btn-outline-info">編集する</button><% end %>
         <% end %>
       </div>

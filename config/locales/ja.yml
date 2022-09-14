@@ -1,14 +1,16 @@
 ja:
   activerecord:
-    attributes:  　　　　　　　# attributes:の直下に
-      member: 　　　　　　　　　 # モデル名を指定し
-        name: 名前   　　　　　# カラム名を指定する。
+    models:
+      member: 会員
+    attributes:
+      member:
+        name: 名前
         email: メールアドレス
-      team:
+      teams:
         name: 名前
         category_id: カテゴリー
         prefecture_id: 都道府県
-      tournament:
+      tournaments:
         name: 名前
         category_id: カテゴリー
         prefecture_id: 都道府県
