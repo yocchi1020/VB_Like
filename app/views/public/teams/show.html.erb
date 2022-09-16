@@ -42,10 +42,13 @@
         <div class='comment col-6 m-2'>
           <p>コメント件数：<%= @team.team_comments.count %></p>
                 <% @team.team_comments.each do |comment| %>
-                <p>
-                <%= comment.member.nickname %>
-                <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.introduction %>
-                <td><%= link_to '削除',  public_team_team_comment_path(comment.team,comment), data: {confirm: '本当に削除しますか？'}, method: :delete %></td></p>
+                  <p>
+                    <%= comment.member.nickname %>
+                    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.introduction %>
+                    <% if comment.member = current_member %>
+                      <%= link_to '削除',  public_team_team_comment_path(comment.team,comment), data: {confirm: '本当に削除しますか？'}, method: :delete %>
+                    <% end %>
+                  </p>
                 <% end %>
             </div>
             <div class="col-md-6 offset-md my-5">
