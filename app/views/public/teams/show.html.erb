@@ -1,34 +1,44 @@
 <div class='container-fluid'>
   <div class='row'>
-    <div class="col-12">
+    <div class="team_sidebar col-2 d-flex justify-content-center">
+      <%= render 'public/teams/sidebar', team: @team %>
+    </div>
+    <div class="col-10">
       <h1 class="title d-flex justify-content-center m-4"><%= @team.name %><span></span></h1>
-      <table class="table table-bordereress">
-        <tr>
-          <th>チーム説明</th>
-          <td><%= @team.overview %></td>
-        </tr>
-        <tr>
-          <th>地域</th>
-          <td><%= @team.prefecture.name %></td>
-        </tr>
-        <tr>
-          <th>カテゴリ</th>
-          <td><%= @team.category.name %></td>
-        </tr>
-        <tr>
-        <tr>
-          <th>実績</th>
-          <th><%= @team.achievement %></th>
-        </tr>
-        <tr>
-          <th>代表者連絡先</th>
-          <td><%= @team.contact_address %></td>
-        </tr>
-        <tr>
-          <th></th>
-          <td><%= @team.entry_field %></td>
-        </tr>
-      </table>
+      <!--<table class="table table-bordereress">-->
+      <!--  <tr>-->
+      <!--    <th>チーム説明</th>-->
+      <!--    <td><%#= @team.overview %></td>-->
+      <!--  </tr>-->
+      <!--  <tr>-->
+      <!--    <th>地域</th>-->
+      <!--    <td><%#= @team.prefecture.name %></td>-->
+      <!--  </tr>-->
+      <!--  <tr>-->
+      <!--    <th>カテゴリ</th>-->
+      <!--    <td><%#= @team.category.name %></td>-->
+      <!--  </tr>-->
+      <!--  <tr>-->
+      <!--  <tr>-->
+      <!--    <th>実績</th>-->
+      <!--    <th><%#= @team.achievement %></th>-->
+      <!--  </tr>-->
+      <!--  <tr>-->
+      <!--    <th>代表者連絡先</th>-->
+      <!--    <td><%#= @team.contact_address %></td>-->
+      <!--  </tr>-->
+      <!--  <tr>-->
+      <!--    <th></th>-->
+      <!--    <td><%#= @team.entry_field %></td>-->
+      <!--  </tr>-->
+      <!--</table>-->
+      <div class='team_image d-flex justify-content-center' >
+        <%= image_tag @team.image, {class: "team_page"}  %>
+      </div>
+      <div class='team_main border-left border-rigft border-dimgray' >
+        <h3>概要</h3>
+      </div>
+
       <div class='row'>
         <div class='team_group col-6 m-2'>
           <% if @team.owner == current_member %>
