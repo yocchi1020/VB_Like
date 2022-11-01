@@ -1,7 +1,10 @@
 <div class='container-fluid'>
   <div class='row'>
     <div class="col-12">
-      <h1 class="title d-flex justify-content-center m-4"><%= @team.name %><span></span></h1>
+      <h1 class="title d-flex justify-content-center m-4"><%= @team.name %>
+      <% if @team.owner == current_member %>
+        <%= link_to edit_public_team_path(@team) do %><i class="fas fa-edit"></i><% end %>
+      <% end %></h1>
       <% if @team.image.attached? %>
         <div class='team_image d-flex justify-content-center' >
           <%= image_tag @team.image, {class: "team_page"}  %>
@@ -34,7 +37,6 @@
         </div>
         <div class='team_group d-flex justify-content-center m-4'>
           <% if @team.owner == current_member %>
-            <%= link_to 'Edit', edit_public_team_path(@team), class: "btn btn-sm btn-success" %>
           <% elsif @team.members.include?(current_member) %>
             <%= link_to '脱退する', public_team_path(@team), method: :delete, class: "btn btn-sm btn-danger" %>
           <% else %>
